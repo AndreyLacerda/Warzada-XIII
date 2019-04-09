@@ -1,6 +1,5 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.testes.dado;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.Collection;
