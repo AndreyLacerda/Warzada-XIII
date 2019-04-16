@@ -12,7 +12,7 @@ import br.edu.ifsp.spo.lp1a3.warzadaxiii.dado.Rolagem;
 public class TesteRolagem {
 	
 	@Test
-	void devo_conseguir_rolar_um_dado_de_n_lados_n_vezes() {
+	public void devo_conseguir_rolar_um_dado_de_n_lados_n_vezes() {
 		//1. Configuração
 		int lados = 6;
 		int qtd = 10;

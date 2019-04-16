@@ -1,5 +1,6 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.testes.localização;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import br.edu.ifsp.spo.lp1a3.warzadaxiii.player.Player;
 public class TesteTerritórios {
 	
 	@Test
-	void devo_conseguir_criar_um_Território() {
+	public void devo_conseguir_criar_um_Território() {
 		//1. Configuração
 		String nome;
 		Player dominador;
@@ -34,7 +35,7 @@ public class TesteTerritórios {
 	}
 	
 	@Test
-	void devo_conseguir_inserir_fronteiras() {
+	public void devo_conseguir_inserir_fronteiras() {
 		//1. Configuração
 		String nome1 = "Brasil";
 		String nome2 = "Argentina";
@@ -57,7 +58,7 @@ public class TesteTerritórios {
 	}
 	
 	@Test
-	void devo_conseguir_saber_se_um_pais_faz_fronteira_com_outro() {
+	public void devo_conseguir_saber_se_um_pais_faz_fronteira_com_outro() {
 		//1. Configuração
 		String nome1 = "Brasil";
 		String nome2 = "Argentina";
@@ -73,6 +74,7 @@ public class TesteTerritórios {
 		
 		//3. Validação / Asserção
 		assertEquals(true, argentina.vizinho(brasil));
+		assertFalse(brasil.vizinho(argentina));
 	
 	}
 

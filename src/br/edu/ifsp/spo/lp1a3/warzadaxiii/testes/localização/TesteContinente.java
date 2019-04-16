@@ -1,5 +1,6 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.testes.localização;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import br.edu.ifsp.spo.lp1a3.warzadaxiii.player.Player;
 public class TesteContinente {
 	
 	@Test
-	void devo_conseguir_criar_continente() {
+	public void devo_conseguir_criar_continente() {
 		//1. Configuração
 		String nome = "Europa";
 		List<Território> países = new ArrayList<Território>();
@@ -31,7 +32,7 @@ public class TesteContinente {
 	}
 	
 	@Test
-	void devo_conseguir_add_país() {
+	public void devo_conseguir_add_país() {
 		//1. Configuração
 		String nomePaís = "Brasil";
 		Player dominador = null;
@@ -55,13 +56,15 @@ public class TesteContinente {
 	}
 	
 	@Test
-	void devo_conseguir_checar_se_um_país_faz_parte_do_continente() {
+	public void devo_conseguir_checar_se_um_país_faz_parte_do_continente() {
+		String nomePaís2 = "Argentina";
 		String nomePaís = "Brasil";
 		Player dominador = null;
 		int	qtd_tropas = 10;
 		List<Território> fronteira = new ArrayList<Território>();
 		
 		Território brasil = new Território(nomePaís, dominador, qtd_tropas, fronteira);
+		Território argentina = new Território(nomePaís2, dominador, qtd_tropas, fronteira);
 		
 		List<Território> países = new ArrayList<Território>();
 		String nome = "Europa";
@@ -73,6 +76,7 @@ public class TesteContinente {
 		
 		//3. Validação / Asserção
 		assertEquals(true, europa.checarPaís(brasil));
+		assertFalse(europa.checarPaís(argentina));
 		
 	}
 	

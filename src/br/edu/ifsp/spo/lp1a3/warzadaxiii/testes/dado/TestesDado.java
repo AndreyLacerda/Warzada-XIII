@@ -9,7 +9,7 @@ import br.edu.ifsp.spo.lp1a3.warzadaxiii.dado.Dado;
 public class TestesDado {
 	
 	@Test
-	void devo_conseguir_criar_um_dado_de_n_lados() {
+	public void devo_conseguir_criar_um_dado_de_n_lados() {
 		//1. Configuração
 		int lados = 6;
 		

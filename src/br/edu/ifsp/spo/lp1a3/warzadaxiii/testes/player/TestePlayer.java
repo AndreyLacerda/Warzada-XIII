@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class TestePlayer {
 	
 	@Test
-	void devo_conseguir_criar_player() {
+	public void devo_conseguir_criar_player() {
 		//1. Configuração
 		int player = 1;
 		int ativo = 1;
