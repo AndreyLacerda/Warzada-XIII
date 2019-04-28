@@ -1,18 +1,18 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.localização;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.player.Player;
 
 public class Continente {
 	
 	private String nome;
-	private	List<Território> países;
+	private	Set<Território> países = new HashSet<Território>();
 	private	Player dominador;
 	
-	public Continente(String nome, List<Território> países, Player dominador) {
+	public Continente(String nome, Player dominador) {
 		this.nome = nome;
-		this.países = países;
 		this.dominador = dominador;
 	}
 
@@ -20,7 +20,7 @@ public class Continente {
 		return nome;
 	}
 
-	public List<Território> getPaíses() {
+	public Set<Território> getPaíses() {
 		return países;
 	}
 

@@ -4,7 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,15 +19,13 @@ public class TesteContinente {
 	public void devo_conseguir_criar_continente() {
 		//1. Configuração
 		String nome = "Europa";
-		List<Território> países = new ArrayList<Território>();
 		Player dominador = null;
 		
 		//2. Execução
-		Continente europa = new Continente(nome, países, dominador);
+		Continente europa = new Continente(nome, dominador);
 		
 		//3. Validação / Asserção 
 		assertEquals(nome, europa.getNome());
-		assertEquals(países, europa.getPaíses());
 		assertEquals(dominador, europa.getDominador());
 		
 	}
@@ -37,15 +36,14 @@ public class TesteContinente {
 		String nomePaís = "Brasil";
 		Player dominador = null;
 		int	qtd_tropas = 10;
-		List<Território> fronteira = new ArrayList<Território>();
 		
-		Território brasil = new Território(nomePaís, dominador, qtd_tropas, fronteira);
+		Território brasil = new Território(nomePaís, dominador, qtd_tropas);
 		
-		List<Território> países = new ArrayList<Território>();
+		Set<Território> países = new HashSet<Território>();
 		String nome = "Europa";
 
 		//2. Execução
-		Continente europa = new Continente(nome, países, dominador);
+		Continente europa = new Continente(nome, dominador);
 
 		europa.addPaís(brasil);
 		países.add(brasil);
@@ -61,16 +59,15 @@ public class TesteContinente {
 		String nomePaís = "Brasil";
 		Player dominador = null;
 		int	qtd_tropas = 10;
-		List<Território> fronteira = new ArrayList<Território>();
 		
-		Território brasil = new Território(nomePaís, dominador, qtd_tropas, fronteira);
-		Território argentina = new Território(nomePaís2, dominador, qtd_tropas, fronteira);
+		Território brasil = new Território(nomePaís, dominador, qtd_tropas);
+		Território argentina = new Território(nomePaís2, dominador, qtd_tropas);
 		
-		List<Território> países = new ArrayList<Território>();
+		Set<Território> países = new HashSet<Território>();
 		String nome = "Europa";
 
 		//2. Execução
-		Continente europa = new Continente(nome, países, dominador);
+		Continente europa = new Continente(nome, dominador);
 
 		europa.addPaís(brasil);
 		
@@ -79,8 +76,5 @@ public class TesteContinente {
 		assertFalse(europa.checarPaís(argentina));
 		
 	}
-	
-	
-	
 
 }

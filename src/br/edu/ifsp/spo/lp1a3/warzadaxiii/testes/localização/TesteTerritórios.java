@@ -3,8 +3,8 @@ package br.edu.ifsp.spo.lp1a3.warzadaxiii.testes.localização;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,13 +19,12 @@ public class TesteTerritórios {
 		String nome;
 		Player dominador;
 		int	qtd_tropas;
-		List<Território> fronteira = new ArrayList<Território>();
 		
 		//2. Execução
 		nome = "Brasil";
 		dominador = null;
 		qtd_tropas = 10;
-		Território brasil = new Território(nome, dominador, qtd_tropas, fronteira);
+		Território brasil = new Território(nome, dominador, qtd_tropas);
 		
 		//3. Validação / Asserção
 		assertEquals(nome, brasil.getNome());
@@ -41,12 +40,12 @@ public class TesteTerritórios {
 		String nome2 = "Argentina";
 		Player dominador = null;
 		int	qtd_tropas = 10;
-		List<Território> fronteira = new ArrayList<Território>();
+		Set<Território> fronteira = new HashSet<Território>();
 		
-		Território brasil = new Território(nome1, dominador, qtd_tropas, fronteira);
+		Território brasil = new Território(nome1, dominador, qtd_tropas);
 		
 		//2. Execução
-		Território argentina = new Território(nome2, dominador, qtd_tropas, fronteira);
+		Território argentina = new Território(nome2, dominador, qtd_tropas);
 		argentina.addFronteira(brasil);
 		fronteira.add(brasil);
 		
@@ -64,12 +63,12 @@ public class TesteTerritórios {
 		String nome2 = "Argentina";
 		Player dominador = null;
 		int	qtd_tropas = 10;
-		List<Território> fronteira = new ArrayList<Território>();
+		Set<Território> fronteira = new HashSet<Território>();
 		
-		Território brasil = new Território(nome1, dominador, qtd_tropas, fronteira);
+		Território brasil = new Território(nome1, dominador, qtd_tropas);
 		
 		//2. Execução
-		Território argentina = new Território(nome2, dominador, qtd_tropas, fronteira);
+		Território argentina = new Território(nome2, dominador, qtd_tropas);
 		argentina.addFronteira(brasil);
 		
 		//3. Validação / Asserção

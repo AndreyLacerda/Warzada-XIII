@@ -1,7 +1,8 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.localização;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.player.Player;
 
@@ -10,14 +11,13 @@ public class Território {
 	private String nome;
 	private Player dominador;
 	private int qtd_tropas;
-	private List<Território> fronteira = new ArrayList<Território>();
+	private Set<Território> fronteira = new HashSet<Território>();
 	
 	
-	public Território (String nome, Player dominador, int qtd_tropas, List<Território> fronteira) {
+	public Território (String nome, Player dominador, int qtd_tropas) {
 		this.nome = nome;
 		this.dominador = dominador;
 		this.qtd_tropas = qtd_tropas;
-		this.fronteira = fronteira;
 	}
 
 
@@ -36,7 +36,7 @@ public class Território {
 	}
 
 
-	public List<Território> getFronteira() {
+	public Set<Território> getFronteira() {
 		return fronteira;
 	}
 	
