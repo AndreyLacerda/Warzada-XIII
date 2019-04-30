@@ -14,10 +14,10 @@ public class Território {
 	private Set<Território> fronteira = new HashSet<Território>();
 	
 	
-	public Território (String nome, Player dominador, int qtd_tropas) {
+	public Território (String nome) {
 		this.nome = nome;
-		this.dominador = dominador;
-		this.qtd_tropas = qtd_tropas;
+		this.dominador = null;
+		this.qtd_tropas = 10;
 	}
 
 
@@ -25,16 +25,13 @@ public class Território {
 		return nome;
 	}
 
-
 	public Player getDominador() {
 		return dominador;
 	}
 
-
 	public int getTropas() {
 		return qtd_tropas;
 	}
-
 
 	public Set<Território> getFronteira() {
 		return fronteira;
@@ -51,7 +48,19 @@ public class Território {
 	
 	public void addFronteira(Território país) {
 		this.fronteira.add(país);
-		
+	}
+	
+	public void addTropas(int qtd) {
+		this.qtd_tropas += qtd;
+	}
+	
+	public void removeTropas(int qtd) {
+		this.qtd_tropas -= qtd;
+	}
+	
+	public void updateDominador(Player dominador) {
+		this.dominador = dominador;
+		System.out.println("Player " + dominador.getNumero() + " dominou o(a) " + this.getNome() + "!");
 	}
 	
 }

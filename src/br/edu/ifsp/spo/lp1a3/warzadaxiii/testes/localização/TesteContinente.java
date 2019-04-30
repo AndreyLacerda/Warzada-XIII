@@ -3,7 +3,6 @@ package br.edu.ifsp.spo.lp1a3.warzadaxiii.testes.localização;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,14 +18,13 @@ public class TesteContinente {
 	public void devo_conseguir_criar_continente() {
 		//1. Configuração
 		String nome = "Europa";
-		Player dominador = null;
 		
 		//2. Execução
-		Continente europa = new Continente(nome, dominador);
+		Continente europa = new Continente(nome);
 		
 		//3. Validação / Asserção 
 		assertEquals(nome, europa.getNome());
-		assertEquals(dominador, europa.getDominador());
+		assertEquals(null, europa.getDominador());
 		
 	}
 	
@@ -34,16 +32,14 @@ public class TesteContinente {
 	public void devo_conseguir_add_país() {
 		//1. Configuração
 		String nomePaís = "Brasil";
-		Player dominador = null;
-		int	qtd_tropas = 10;
 		
-		Território brasil = new Território(nomePaís, dominador, qtd_tropas);
+		Território brasil = new Território(nomePaís);
 		
 		Set<Território> países = new HashSet<Território>();
 		String nome = "Europa";
 
 		//2. Execução
-		Continente europa = new Continente(nome, dominador);
+		Continente europa = new Continente(nome);
 
 		europa.addPaís(brasil);
 		países.add(brasil);
@@ -57,17 +53,14 @@ public class TesteContinente {
 	public void devo_conseguir_checar_se_um_país_faz_parte_do_continente() {
 		String nomePaís2 = "Argentina";
 		String nomePaís = "Brasil";
-		Player dominador = null;
-		int	qtd_tropas = 10;
 		
-		Território brasil = new Território(nomePaís, dominador, qtd_tropas);
-		Território argentina = new Território(nomePaís2, dominador, qtd_tropas);
+		Território brasil = new Território(nomePaís);
+		Território argentina = new Território(nomePaís2);
 		
-		Set<Território> países = new HashSet<Território>();
 		String nome = "Europa";
 
 		//2. Execução
-		Continente europa = new Continente(nome, dominador);
+		Continente europa = new Continente(nome);
 
 		europa.addPaís(brasil);
 		
@@ -77,4 +70,20 @@ public class TesteContinente {
 		
 	}
 
+	
+	@Test
+	public void devo_conseguir_atualizar_dominador_continente() {
+		//1. Configuração
+		String nome1 = "Europa";
+		Player dominador = new Player(1, true, 10);
+		
+		Continente europa = new Continente(nome1);
+		
+		//2. Execução
+		europa.updateDominador(dominador);
+		
+		//3. Validação / Asserção
+		assertEquals(dominador, europa.getDominador());
+		
+	}
 }

@@ -11,9 +11,9 @@ public class Continente {
 	private	Set<Território> países = new HashSet<Território>();
 	private	Player dominador;
 	
-	public Continente(String nome, Player dominador) {
+	public Continente(String nome) {
 		this.nome = nome;
-		this.dominador = dominador;
+		this.dominador = null;
 	}
 
 	public String getNome() {
@@ -39,4 +39,10 @@ public class Continente {
 			return false;
 		}
 	}
+	
+	public void updateDominador(Player dominador) {
+		this.dominador = dominador;
+		System.out.println("Player " + dominador.getNumero() + " dominou o(a) " + this.getNome() + "!");
+	}
+	
 }

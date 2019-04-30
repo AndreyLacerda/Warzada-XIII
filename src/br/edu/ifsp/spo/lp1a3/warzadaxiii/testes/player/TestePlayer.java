@@ -5,9 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.junit.jupiter.api.Test;
 
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
@@ -23,7 +20,7 @@ public class TestePlayer {
 		int qtd_tropas = 10;
 		
 		//2. Execução
-		Player player1 = new Player(player, ativo, qtd_tropas);
+		Player player1 = new Player(player, ativo,qtd_tropas);
 		
 		//3. Validação / Asserção
 		assertEquals(player, player1.getNumero());
@@ -35,7 +32,7 @@ public class TestePlayer {
 	public void devo_conseguir_add_território_ao_player() {
 		//1. Configuração
 		Player player = new Player(1, true, 10);
-		Território brasil = new Território("Brasil", player, 10);
+		Território brasil = new Território("Brasil");
 		
 		//2. Execução
 		player.adicionarDominio(brasil);
@@ -49,8 +46,7 @@ public class TestePlayer {
 	public void devo_conseguir_remover_território_ao_player() {
 		//1. Configuração
 		Player player = new Player(1, true, 10);
-		Território argentina = new Território("Argentina", player, 10);
-		Território brasil = new Território("Brasil", player, 10);
+		Território brasil = new Território("Brasil");
 		player.adicionarDominio(brasil);
 		
 		//2. Execução
@@ -59,6 +55,52 @@ public class TestePlayer {
 		//3. Validação / Asserção
 		assertFalse(player.dominaTerritorio(brasil));
 		
+	}
+	
+	@Test
+	public void devo_conseguir_remover_tropas_do_player() {
+		//1. Configuração
+		int numero = 1;
+		int qtd = 10;
+		boolean ativo = true;
+		Player player = new Player(numero, ativo, qtd);
+		
+		//2. Execução
+		player.removeTropas(qtd/2);
+		
+		//3. Validação / Asserção
+		assertEquals(qtd-qtd/2, player.getQtd_tropas());
+	}
+	
+	@Test
+	public void devo_conseguir_adicionar_tropas_ao_player() {
+		//1. Configuração
+		int numero = 1;
+		int qtd = 10;
+		boolean ativo = true;
+		Player player = new Player(numero, ativo, qtd);
+		
+		//2.Execução
+		player.addTropas(qtd);
+		
+		//3. Validação / Asserção
+		assertEquals(qtd+qtd, player.getQtd_tropas());
+		
+	}
+	
+	@Test
+	public void devo_conseguir_eliminar_player() {
+		//1. Configuração
+		int numero = 1;
+		int qtd = 10;
+		boolean ativo = true;
+		Player player = new Player(numero, ativo, qtd);
+		
+		//2. Execução
+		player.removeTropas(qtd);
+		
+		//3. Validação / Asserção
+		assertEquals(qtd-qtd, player.getQtd_tropas());
 	}
 	
 }

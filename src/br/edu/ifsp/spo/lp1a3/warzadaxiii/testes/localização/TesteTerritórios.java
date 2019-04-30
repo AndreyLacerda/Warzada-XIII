@@ -17,19 +17,16 @@ public class TesteTerritórios {
 	public void devo_conseguir_criar_um_Território() {
 		//1. Configuração
 		String nome;
-		Player dominador;
-		int	qtd_tropas;
+		int	qtd_tropas = 10;
 		
 		//2. Execução
 		nome = "Brasil";
-		dominador = null;
-		qtd_tropas = 10;
-		Território brasil = new Território(nome, dominador, qtd_tropas);
+		Território brasil = new Território(nome);
 		
 		//3. Validação / Asserção
 		assertEquals(nome, brasil.getNome());
 		assertEquals(qtd_tropas, brasil.getTropas());
-		assertEquals(dominador, brasil.getDominador());
+		assertEquals(null, brasil.getDominador());
 		
 	}
 	
@@ -38,14 +35,12 @@ public class TesteTerritórios {
 		//1. Configuração
 		String nome1 = "Brasil";
 		String nome2 = "Argentina";
-		Player dominador = null;
-		int	qtd_tropas = 10;
 		Set<Território> fronteira = new HashSet<Território>();
 		
-		Território brasil = new Território(nome1, dominador, qtd_tropas);
+		Território brasil = new Território(nome1);
 		
 		//2. Execução
-		Território argentina = new Território(nome2, dominador, qtd_tropas);
+		Território argentina = new Território(nome2);
 		argentina.addFronteira(brasil);
 		fronteira.add(brasil);
 		
@@ -61,14 +56,11 @@ public class TesteTerritórios {
 		//1. Configuração
 		String nome1 = "Brasil";
 		String nome2 = "Argentina";
-		Player dominador = null;
-		int	qtd_tropas = 10;
-		Set<Território> fronteira = new HashSet<Território>();
 		
-		Território brasil = new Território(nome1, dominador, qtd_tropas);
+		Território brasil = new Território(nome1);
 		
 		//2. Execução
-		Território argentina = new Território(nome2, dominador, qtd_tropas);
+		Território argentina = new Território(nome2);
 		argentina.addFronteira(brasil);
 		
 		//3. Validação / Asserção
@@ -77,4 +69,50 @@ public class TesteTerritórios {
 	
 	}
 
+	@Test
+	public void devo_conseguir_adicionar_tropas() {
+		//1. Configuração
+		String nome1 = "Brasil";
+		int	qtd = 10;
+		
+		Território brasil = new Território(nome1);
+		
+		//2. Execução
+		brasil.addTropas(qtd);
+		
+		//3. Validação / Asserção
+		assertEquals(qtd*2, brasil.getTropas());
+	}
+	
+	@Test
+	public void devo_conseguir_remover_tropas() {
+		//1. Configuração
+		String nome1 = "Brasil";
+		int	qtd = 10;
+		
+		Território brasil = new Território(nome1);
+		
+		//2. Execução
+		brasil.removeTropas(qtd/2);
+		
+		//3. Validação / Asserção
+		assertEquals(qtd-qtd/2, brasil.getTropas());
+	}
+	
+	@Test
+	public void devo_conseguir_atualizar_dominador_território() {
+		//1. Configuração
+		String nome1 = "Brasil";
+		Player dominador = new Player(1, true, 10);
+		
+		Território brasil = new Território(nome1);
+		
+		//2. Execução
+		brasil.updateDominador(dominador);
+		
+		//3. Validação / Asserção
+		assertEquals(dominador, brasil.getDominador());
+		
+	}
+	
 }
