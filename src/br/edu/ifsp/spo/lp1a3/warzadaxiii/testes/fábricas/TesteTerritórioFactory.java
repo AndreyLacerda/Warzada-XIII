@@ -1,9 +1,7 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.testes.fábricas;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
