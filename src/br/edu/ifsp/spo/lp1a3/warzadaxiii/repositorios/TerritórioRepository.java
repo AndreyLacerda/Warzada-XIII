@@ -1,13 +1,13 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.repositorios;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
 
 public class TerritórioRepository {
 	
-	private static Set<Território> territórios = new HashSet<Território>();
+	private static Set<Território> territórios = new LinkedHashSet<Território>();
 
 	public static Set<Território> getTerritórios() {
 		return territórios;

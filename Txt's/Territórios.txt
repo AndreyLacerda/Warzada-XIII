@@ -1,42 +1,42 @@
-Brasil
-Argentina/Uruguai
-Colômbia/Venezuela
-Peru/Bolívia/Chile
-México
-Califórnia
-Nova York
-Labrador
-Ottawa
-Vancouver
-Mackenzie
-Alasca
-Groenlândia
-Islândia
-Inglaterra
-Suécia
-Alemanha
-Espanha/Portugal/França/Itália
-Polônia/Iugoslávia
-Moscou
-Argélia/Nigéria
-Egito
-Congo
-Sudão
-Madagascar
 África do Sul
-Oriente Médio
+Alasca
+Alemanha
 Aral
-Omsk
-Dudinka
-Sibéria
-Tchita
-Mongólia
-Vladivostok
-China
-Índia
-Japão
-Vietnã
-Bornéu
-Sumatra
-Nova Guiné
+Argélia/Nigéria
+Argentina/Uruguai
 Austrália
+Bornéu
+Brasil
+Califórnia
+China
+Colômbia/Venezuela
+Congo
+Dudinka
+Egito
+Espanha/Portugal/França/Itália
+Groenlândia
+Índia
+Inglaterra
+Islândia
+Japão
+Labrador
+Mackenzie
+Madagascar
+México
+Mongólia
+Moscou
+Nova Guiné
+Nova York
+Omsk
+Oriente Médio
+Ottawa
+Peru/Bolívia/Chile
+Polônia/Iugoslávia
+Sibéria
+Sudão
+Suécia
+Sumatra
+Tchita
+Vancouver
+Vietnã
+Vladivostok
