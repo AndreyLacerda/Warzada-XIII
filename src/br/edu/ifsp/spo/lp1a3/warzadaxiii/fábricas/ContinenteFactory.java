@@ -10,32 +10,29 @@ import br.edu.ifsp.spo.lp1a3.warzadaxiii.repositorios.TerritórioRepository;
 
 public class ContinenteFactory {
 	
-	public static void buildarContinentes() throws Exception {
-		String nome;
-		BufferedReader file = new BufferedReader(new FileReader("/Warzada-XIII/Txt's/Continente.txt"));
-		
-		while(( nome = file.readLine())!=null) {
-			Continente continente = new Continente(nome);
-			ContinenteRepository.addContinente(continente);
-		}		
-		file.close();
-		addPaises();
+	public static void buildarContinentes() {
+		try {
+			String nome;
+			BufferedReader file = new BufferedReader(new FileReader("Txt's/Continentes.txt"));
+			
+			while(( nome = file.readLine())!=null) {
+				Continente continente = new Continente(nome);
+				ContinenteRepository.addContinente(continente);
+			}		
+			file.close();
+			TerritórioFactory.buildarTerritórios();
+			addPaises();
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	private static void addPaises() throws Exception {
-		String nome;
-		for (Continente continente : ContinenteRepository.getContinentes()) {
-			if (continente.getNome().equals("África")) {
-				BufferedReader file = new BufferedReader(new FileReader("/Warzada-XIII/Txt's/ContinenteÁfrica.txt"));
-				
-				while((nome = file.readLine()) != null) {
-					Território país = TerritórioRepository.pegarTerritório(nome);
-					continente.addPaís(país);
-				}
-				file.close();
-			}else {
-				if (continente.getNome().equals("Ásia")) {
-					BufferedReader file = new BufferedReader(new FileReader("/Warzada-XIII/Txt's/ContinenteÁsia.txt"));
+		try {
+			String nome;
+			for (Continente continente : ContinenteRepository.getContinentes()) {
+				if (continente.getNome().equals("África")) {
+					BufferedReader file = new BufferedReader(new FileReader("Txt's/ContinenteÁfrica.txt"));
 					
 					while((nome = file.readLine()) != null) {
 						Território país = TerritórioRepository.pegarTerritório(nome);
@@ -43,8 +40,8 @@ public class ContinenteFactory {
 					}
 					file.close();
 				}else {
-					if (continente.getNome().equals("América Do Sul")) {
-						BufferedReader file = new BufferedReader(new FileReader("/Warzada-XIII/Txt's/ContinenteAméricaDoSul.txt"));
+					if (continente.getNome().equals("Ásia")) {
+						BufferedReader file = new BufferedReader(new FileReader("Txt's/ContinenteÁsia.txt"));
 						
 						while((nome = file.readLine()) != null) {
 							Território país = TerritórioRepository.pegarTerritório(nome);
@@ -52,8 +49,8 @@ public class ContinenteFactory {
 						}
 						file.close();
 					}else {
-						if (continente.getNome().equals("América Do Norte")) {
-							BufferedReader file = new BufferedReader(new FileReader("/Warzada-XIII/Txt's/ContinenteAméricaDoNorte.txt"));
+						if (continente.getNome().equals("América Do Sul")) {
+							BufferedReader file = new BufferedReader(new FileReader("Txt's/ContinenteAméricaDoSul.txt"));
 							
 							while((nome = file.readLine()) != null) {
 								Território país = TerritórioRepository.pegarTerritório(nome);
@@ -61,8 +58,8 @@ public class ContinenteFactory {
 							}
 							file.close();
 						}else {
-							if (continente.getNome().equals("Europa")) {
-								BufferedReader file = new BufferedReader(new FileReader("/Warzada-XIII/Txt's/ContinenteEuropa.txt"));
+							if (continente.getNome().equals("América Do Norte")) {
+								BufferedReader file = new BufferedReader(new FileReader("Txt's/ContinenteAméricaDoNorte.txt"));
 								
 								while((nome = file.readLine()) != null) {
 									Território país = TerritórioRepository.pegarTerritório(nome);
@@ -70,22 +67,33 @@ public class ContinenteFactory {
 								}
 								file.close();
 							}else {
-								if (continente.getNome().equals("Oceania")) {
-									BufferedReader file = new BufferedReader(new FileReader("/Warzada-XIII/Txt's/ContinenteOceania.txt"));
+								if (continente.getNome().equals("Europa")) {
+									BufferedReader file = new BufferedReader(new FileReader("Txt's/ContinenteEuropa.txt"));
 									
 									while((nome = file.readLine()) != null) {
 										Território país = TerritórioRepository.pegarTerritório(nome);
 										continente.addPaís(país);
 									}
 									file.close();
+								}else {
+									if (continente.getNome().equals("Oceania")) {
+										BufferedReader file = new BufferedReader(new FileReader("Txt's/ContinenteOceania.txt"));
+										
+										while((nome = file.readLine()) != null) {
+											Território país = TerritórioRepository.pegarTerritório(nome);
+											continente.addPaís(país);
+										}
+										file.close();
+									}
 								}
 							}
 						}
 					}
 				}
 			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
 	}
 	
 }

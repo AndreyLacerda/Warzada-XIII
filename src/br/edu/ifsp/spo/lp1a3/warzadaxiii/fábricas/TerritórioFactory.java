@@ -8,21 +8,38 @@ import br.edu.ifsp.spo.lp1a3.warzadaxiii.repositorios.TerritórioRepository;
 
 public class TerritórioFactory {
 
-	public static void buildarTerritórios() throws Exception {
-		BufferedReader file = new BufferedReader(new FileReader("/Warzada-XIII/Txt's/Territórios.txt"));
-		String nome;
-		
-		while(( nome = file.readLine())!=null) {
-			Território territorio = new Território(nome);
-			TerritórioRepository.addTerritório(territorio);
+	public static void buildarTerritórios(){
+		try {
+			BufferedReader file = new BufferedReader(new FileReader("Txt's/Territórios.txt"));
+			String nome;
+			
+			while(( nome = file.readLine())!=null) {
+				Território territorio = new Território(nome);
+				TerritórioRepository.addTerritório(territorio);
+			}
+			
+			file.close();
+			addFronteiras();
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
-		file.close();
-		
 	}
 	
 	private static void addFronteiras(){
-		
+		try {
+			BufferedReader file = new BufferedReader(new FileReader("Txt's/Fronteiras.txt"));
+			String nome;
+			
+			for(Território território : TerritórioRepository.getTerritórios()) {
+				while((nome = file.readLine())!= null) {
+					Território país = TerritórioRepository.pegarTerritório(nome);
+					território.addFronteira(país);
+				}
+			}
+			file.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 }
