@@ -4,9 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Continente;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
-import br.edu.ifsp.spo.lp1a3.warzadaxiii.repositorios.ContinenteRepository;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.repositorios.TerritórioRepository;
 
 public class TesteTerritórioRepository {

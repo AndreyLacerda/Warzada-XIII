@@ -1,12 +1,15 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.testes.player;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Collection;
 
 import org.junit.jupiter.api.Test;
 
+import br.edu.ifsp.spo.lp1a3.warzadaxiii.dado.Dado;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.player.Player;
 
@@ -103,4 +106,18 @@ public class TestePlayer {
 		assertEquals(qtd-qtd, player.getQtd_tropas());
 	}
 	
+	@Test
+	public void devo_conseguir_rolar_dado() {
+		//1. Configuração
+		Player player = new Player(1, true, 1);
+		Dado dado6 = new Dado(6);
+		
+		//2. Execução
+		Collection<Integer> result = player.rolarDado(1, dado6);
+		
+		//3. Validação / Asserção
+		assertFalse(result.contains(dado6.getLados()+1));
+		assertFalse(result.contains(0));
+		
+	}
 }

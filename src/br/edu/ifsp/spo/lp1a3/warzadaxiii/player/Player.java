@@ -1,8 +1,12 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.player;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import br.edu.ifsp.spo.lp1a3.warzadaxiii.dado.Dado;
+import br.edu.ifsp.spo.lp1a3.warzadaxiii.dado.Rolagem;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
 
 public class Player {
@@ -72,4 +76,10 @@ public class Player {
 		this.setAtivo();
 	}
 	
+	public Collection<Integer> rolarDado (int qtd, Dado dado) {
+		Collection<Integer> resultado = new ArrayList<Integer>();
+		resultado = Rolagem.rolar(dado, qtd);
+		
+		return resultado;
+	}
 }

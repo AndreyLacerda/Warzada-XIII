@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class Rolagem {
 	
-	private Collection<Integer> rolagens = new ArrayList<Integer>();
+	private static Collection<Integer> rolagens = new ArrayList<Integer>();
 	
-	public Collection<Integer> rolar(Dado dado, int qtd) {
+	public static Collection<Integer> rolar(Dado dado, int qtd) {
 		
 		rolagens.clear();
 		Random rand = new Random();
