@@ -6,6 +6,7 @@ import java.util.Set;
 
 import java.util.LinkedHashSet;
 
+import br.edu.ifsp.spo.lp1a3.warzadaxiii.gameplay.GerenciadorPartidas;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.player.Player;
 
 import org.junit.jupiter.api.Test;
@@ -19,23 +20,11 @@ public class TesteGerenciadorPartida {
 		Set<Player> players = new LinkedHashSet<Player>();
 		
 		//2. Execução
-		GerenciadorPartida.setarPlayer(qtd);
-		players = GerenciadorPartida.getPlayers();
+		GerenciadorPartidas.setarPlayer(qtd);
+		players = GerenciadorPartidas.getPlayers();
+		System.out.println(players.size());
 		
 		//3. Validação / Asserção
 		assertEquals(qtd, players.size());
-	}
-	
-	@Test
-	public void devo_conseguir_definir_ordem_de_jogo() {
-		//1. Configuração
-		int qtd = 3;
-		GerenciadorPartida.setarPlayer(qtd);
-		
-		//2. Execução
-		GerenciadorPartida.definirOrdem();
-		
-		//3. Validação / Asserção
-		
 	}
 }

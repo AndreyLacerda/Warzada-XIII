@@ -12,6 +12,7 @@ public class ContinenteFactory {
 	
 	public static void buildarContinentes() {
 		try {
+			ContinenteRepository.getContinentes().clear();
 			String nome;
 			BufferedReader file = new BufferedReader(new FileReader("Txt's/Continentes.txt"));
 			

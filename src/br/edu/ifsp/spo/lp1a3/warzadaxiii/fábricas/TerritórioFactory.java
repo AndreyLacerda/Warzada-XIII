@@ -10,6 +10,7 @@ public class TerritórioFactory {
 
 	public static void buildarTerritórios(){
 		try {
+			TerritórioRepository.getTerritórios().clear();
 			BufferedReader file = new BufferedReader(new FileReader("Txt's/Territórios.txt"));
 			String nome;
 			

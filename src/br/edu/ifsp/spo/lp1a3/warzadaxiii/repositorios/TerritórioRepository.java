@@ -5,7 +5,7 @@ import java.util.Set;
 
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
 
-public class TerritórioRepository {
+public abstract class TerritórioRepository {
 	
 	private static Set<Território> territórios = new LinkedHashSet<Território>();
 

@@ -2,7 +2,7 @@ package br.edu.ifsp.spo.lp1a3.warzadaxiii.testes.dado;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,10 +17,9 @@ public class TesteRolagem {
 		int lados = 6;
 		int qtd = 10;
 		Dado dado6 = new Dado(lados);
-		Rolagem rolagem = new Rolagem();
 		
 		//2. Execução
-		Collection<Integer> result = rolagem.rolar(dado6, qtd);
+		ArrayList<Integer> result = Rolagem.rolar(dado6, qtd);
 		
 		//3. Validação / Asserção
 		assertFalse(result.contains(dado6.getLados()+1));

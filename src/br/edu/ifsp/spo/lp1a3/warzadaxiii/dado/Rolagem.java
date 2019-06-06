@@ -1,14 +1,13 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.dado;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
 
-public class Rolagem {
+public abstract class Rolagem {
 	
-	private static Collection<Integer> rolagens = new ArrayList<Integer>();
+	private static ArrayList<Integer> rolagens = new ArrayList<Integer>();
 	
-	public static Collection<Integer> rolar(Dado dado, int qtd) {
+	public static ArrayList<Integer> rolar(Dado dado, int qtd) {
 		
 		rolagens.clear();
 		Random rand = new Random();

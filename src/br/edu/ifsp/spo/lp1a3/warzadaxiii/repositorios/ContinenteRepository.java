@@ -5,7 +5,7 @@ import java.util.Set;
 
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Continente;
 
-public class ContinenteRepository {
+public abstract class ContinenteRepository {
 	
 	private static Set<Continente> continentes = new HashSet<Continente>();
 	
