@@ -14,11 +14,8 @@ public class TesteDistribuidorTerritorios {
 	@Test
 	public void devo_conseguir_distribuir_territorios_para_cada_player() {
 		//1. Configuração
-		GerenciadorPartidas.setarPlayer(6);
-		ContinenteFactory.buildarContinentes(); 
-		
 		//2. Execução
-		DistribuidorTerritórios.distribuir(GerenciadorPartidas.getPlayers());
+		GerenciadorPartidas.setarPlayer(6);
 		
 		//3. Validação / Asserção
 		for (Player player : GerenciadorPartidas.getPlayers()) {

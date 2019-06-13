@@ -58,11 +58,11 @@ public class Player {
 	private void setAtivo() {
 		if(this.getQtd_tropas() == 0) {
 			this.ativo = false;
-			System.out.println("Player Eliminado!");
+			System.out.println("Player "+getNumero()+" Eliminado!");
 		}
 		else {
 			this.ativo = true;
-			System.out.println("Player ainda está no jogo!");
+			System.out.println("Player "+getNumero()+" ainda está no jogo!");
 		}
 	}
 
