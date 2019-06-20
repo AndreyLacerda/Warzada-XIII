@@ -18,16 +18,19 @@ public abstract class DistribuidorTerritórios {
 		int qtdTerritórios = 42 / players.size();
 
 		for (Player player : players) {
-			if (territórios.size() == 7 && qtdTerritórios == 7) {
-				int j = 0;
-				while (j < 7) {
-					player.adicionarDominio(territórios.get(j));
-					j += 1;
-				}
-			} else {
-				for (int i = 0; i < qtdTerritórios; i++) {
+			for (int i = 0; i < qtdTerritórios; i++) {
+				if (territórios.size() <= i) {
+					for (Território pais : territórios) {
+						player.addTropas(1);
+						player.adicionarDominio(pais);
+						pais.removeTropas(9);
+					}
+					break;
+				} else {
 					Collections.shuffle(territórios);
 					player.adicionarDominio(territórios.get(i));
+					player.addTropas(1);
+					territórios.get(i).removeTropas(9);
 					territórios.remove(i);
 				}
 			}
