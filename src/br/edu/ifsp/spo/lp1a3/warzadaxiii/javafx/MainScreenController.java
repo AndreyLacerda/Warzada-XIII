@@ -45,11 +45,12 @@ public class MainScreenController extends Application{
 	    stage.close();
 	}
 	
-	@FXML public void iniciar(ActionEvent event) throws IOException {
-		Stage stage = (Stage) iniciar.getScene().getWindow();
-		Pane tela = FXMLLoader.load(getClass().getResource("SetPlayers.fxml"));
-		Scene scene = new Scene(tela);
-		stage.setScene(scene);
+	@FXML
+	public void iniciar(ActionEvent event) throws IOException {
+	Stage stage = (Stage) iniciar.getScene().getWindow();
+	Pane tela = FXMLLoader.load(getClass().getResource("SetPlayers.fxml"));
+	Scene scene = new Scene(tela);
+	stage.setScene(scene);
 	}
 	
 }

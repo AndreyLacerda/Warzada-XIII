@@ -14,24 +14,19 @@ public abstract class DistribuidorTerritórios {
 
 	public static void distribuir(Set<Player> players) {
 		territórios.addAll(TerritórioRepository.getTerritórios());
-
+		ArrayList<Território> territóriosDistribuídos = new ArrayList<Território>();
+		territóriosDistribuídos.clear();
 		int qtdTerritórios = 42 / players.size();
-
 		for (Player player : players) {
-			for (int i = 0; i < qtdTerritórios; i++) {
-				if (territórios.size() <= i) {
-					for (Território pais : territórios) {
-						player.addTropas(1);
-						player.adicionarDominio(pais);
-						pais.removeTropas(9);
-					}
-					break;
-				} else {
-					Collections.shuffle(territórios);
+			int i = 0;
+			while (i < qtdTerritórios) {
+				Collections.shuffle(territórios);
+				if (!territóriosDistribuídos.contains(territórios.get(i))) {
 					player.adicionarDominio(territórios.get(i));
 					player.addTropas(1);
 					territórios.get(i).removeTropas(9);
-					territórios.remove(i);
+					territóriosDistribuídos.add(territórios.get(i));
+					i += 1;
 				}
 			}
 		}

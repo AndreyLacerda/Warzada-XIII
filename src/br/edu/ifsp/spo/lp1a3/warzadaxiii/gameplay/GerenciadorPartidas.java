@@ -1,5 +1,6 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.gameplay;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ import br.edu.ifsp.spo.lp1a3.warzadaxiii.repositorios.ContinenteRepository;
 public abstract class GerenciadorPartidas {
 
 	private static Set<Player> players = new HashSet<Player>();
+	private static ArrayList<Player> playersArray = new ArrayList<Player>();
 	private static int turnos;
 	private static Player playerAtual;
 	private static boolean rodando;
@@ -30,7 +32,18 @@ public abstract class GerenciadorPartidas {
 
 	public static void setRodando(boolean rodando) {
 		GerenciadorPartidas.rodando = rodando;
+		setTurno(1);
+		setPlayerAtual(0);
 	}
+	
+	public static void setPlayerAtual(int player){
+		playerAtual = playersArray.get(player);
+	}
+	
+	public static void setTurno(int turno) {
+		turnos += turno;
+	}
+	
 
 	public static boolean isRodando() {
 		return rodando;
@@ -44,18 +57,11 @@ public abstract class GerenciadorPartidas {
 			players.add(player);
 		}
 		DistribuidorTerritórios.distribuir(players);
+		playersArray.addAll(players);
 		setRodando(true);
 	}
-	
-	public static void jogarPartida() {
-		while (rodando == true) {
-			for(Player player: getPlayers()) {
-				receberTropas(player);
-			}
-		}
-	}
 
-	public static void receberTropas(Player player) {
+	public static int receberTropas(Player player) {
 		int tropasNovas = player.getTerritorios().size() / 2;
 		for (Continente continente : ContinenteRepository.getContinentes()) {
 			if (continente.getDominador() != null && continente.getDominador().getNumero() == player.getNumero()) {
@@ -75,6 +81,7 @@ public abstract class GerenciadorPartidas {
 			}
 		}
 		player.addTropas(tropasNovas);
+		return tropasNovas;
 	}
 
 	public static void distribuirTropasNovas(Player player, String terr, int qtd) {

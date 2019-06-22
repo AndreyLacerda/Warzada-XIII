@@ -17,7 +17,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class SetPlayersController implements Initializable{
+public class SetPlayersController{
 	
 	@FXML
 	private ChoiceBox<Integer> players;
@@ -37,9 +37,8 @@ public class SetPlayersController implements Initializable{
 		players.getItems().addAll(list);
 	}
 	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+	@FXML
+	public void initialize() {
 		loadData();
 		players.setValue(3);
 	}
@@ -47,10 +46,9 @@ public class SetPlayersController implements Initializable{
 	public void startar(ActionEvent event) throws IOException {
 		GerenciadorPartidas.setarPlayer(players.getValue());
 
-		
 		Stage stage = (Stage) startar.getScene().getWindow();
 		FXMLLoader loader = new FXMLLoader();
-		Pane root = loader.load(getClass().getResource("telaPartida.fxml"));
+		Pane root = loader.load(getClass().getResource("TelaInfoPartida.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setResizable(false);
