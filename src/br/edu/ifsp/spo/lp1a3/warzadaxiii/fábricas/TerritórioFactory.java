@@ -2,6 +2,7 @@ package br.edu.ifsp.spo.lp1a3.warzadaxiii.fábricas;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.repositorios.TerritórioRepository;
@@ -31,10 +32,15 @@ public class TerritórioFactory {
 			BufferedReader file = new BufferedReader(new FileReader("Txt's/Fronteiras.txt"));
 			String nome;
 			
-			for(Território território : TerritórioRepository.getTerritórios()) {
-				while((nome = file.readLine())!= null) {
+			ArrayList<Território> territórios = new ArrayList<Território>();
+			territórios.addAll(TerritórioRepository.getTerritórios());
+			int index = 0;
+			while((nome = file.readLine())!= null) {
+				if (!nome.equals("/")) {
 					Território país = TerritórioRepository.pegarTerritório(nome);
-					território.addFronteira(país);
+					territórios.get(index).addFronteira(país);
+				} else {
+					index += 1; 
 				}
 			}
 			file.close();
@@ -42,5 +48,4 @@ public class TerritórioFactory {
 			System.out.println(e.getMessage());
 		}
 	}
-	
 }

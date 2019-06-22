@@ -50,7 +50,7 @@ public class ContinenteFactory {
 						}
 						file.close();
 					}else {
-						if (continente.getNome().equals("América Do Sul")) {
+						if (continente.getNome().equals("América do SUl")) {
 							BufferedReader file = new BufferedReader(new FileReader("Txt's/ContinenteAméricaDoSul.txt"));
 							
 							while((nome = file.readLine()) != null) {
@@ -59,7 +59,7 @@ public class ContinenteFactory {
 							}
 							file.close();
 						}else {
-							if (continente.getNome().equals("América Do Norte")) {
+							if (continente.getNome().equals("América do Norte")) {
 								BufferedReader file = new BufferedReader(new FileReader("Txt's/ContinenteAméricaDoNorte.txt"));
 								
 								while((nome = file.readLine()) != null) {

@@ -27,5 +27,6 @@
       <Label fx:id="mensagem" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="343.0" prefHeight="49.0" prefWidth="336.0" textAlignment="CENTER" textFill="#108d22" wrapText="true" />
       <ComboBox fx:id="qtd" layoutX="117.0" layoutY="185.0" onAction="#cleanMensagem" prefWidth="150.0" />
       <ComboBox fx:id="paises" layoutX="80.0" layoutY="255.0" onAction="#cleanMensagem" prefHeight="25.0" prefWidth="223.0" />
+      <Label fx:id="tropasAtuais" alignment="CENTER" contentDisplay="CENTER" layoutX="82.0" layoutY="280.0" prefHeight="17.0" prefWidth="223.0" text="(Todos os meus territórios)" textAlignment="CENTER" />
    </children>
 </AnchorPane>

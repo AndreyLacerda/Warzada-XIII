@@ -26,8 +26,12 @@ public class TelaInfoPartidaController {
 	public Button comecar;
 	
 	@FXML
+	public Label turno;
+	
+	@FXML
 	public void initialize() {
 		comecar.setText("Começar");
+		turno.setText("Turno "+GerenciadorPartidas.getTurnos());
 		showPlayerPaises();
 	}
 	
@@ -47,7 +51,7 @@ public class TelaInfoPartidaController {
 			paises.setPrefWidth(212);
 			paises.setPrefHeight(25);
 			for (Território pais : player.getTerritorios()) {
-				paises.getItems().add(pais.getNome());
+				paises.getItems().add((pais.getNome()+" - "+pais.getTropas()+" Tropas"));
 			}
 			opcoes.getChildren().addAll(playerLabel, paises);
 		}
@@ -61,7 +65,7 @@ public class TelaInfoPartidaController {
 		neutros.setPrefHeight(25);
 		for (Território pais : TerritórioRepository.getTerritórios()) {
 			if (pais.getDominador() == null) {
-				neutros.getItems().add(pais.getNome());
+				neutros.getItems().add((pais.getNome()+" - "+pais.getTropas()+" Tropas"));
 			}
 		}
 		opcoes.getChildren().addAll(neutrosLabel, neutros);

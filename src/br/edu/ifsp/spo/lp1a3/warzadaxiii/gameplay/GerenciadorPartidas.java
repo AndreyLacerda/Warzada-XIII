@@ -17,6 +17,8 @@ public abstract class GerenciadorPartidas {
 	private static int turnos;
 	private static Player playerAtual;
 	private static boolean rodando;
+	private static int index;
+	
 
 	public static Set<Player> getPlayers() {
 		return players;
@@ -33,11 +35,12 @@ public abstract class GerenciadorPartidas {
 	public static void setRodando(boolean rodando) {
 		GerenciadorPartidas.rodando = rodando;
 		setTurno(1);
-		setPlayerAtual(0);
+		index = 0;
+		setPlayerAtual();
 	}
 	
-	public static void setPlayerAtual(int player){
-		playerAtual = playersArray.get(player);
+	public static void setPlayerAtual(){
+		playerAtual = playersArray.get(index);
 	}
 	
 	public static void setTurno(int turno) {
@@ -80,6 +83,9 @@ public abstract class GerenciadorPartidas {
 				}
 			}
 		}
+		if (tropasNovas == 0) {
+			tropasNovas = 1;
+		}
 		player.addTropas(tropasNovas);
 		return tropasNovas;
 	}
@@ -91,6 +97,25 @@ public abstract class GerenciadorPartidas {
 			}
 		}
 
+	}
+	
+	public static void moverTropas(Território origem, Território destino, int qtd) {
+		origem.removeTropas(qtd);
+		destino.addTropas(qtd);
+	}
+	
+	public static void passarVez() {
+		index += 1;
+		if (index >= players.size())
+			index = 0;
+		if (playersArray.get(index).getQtd_tropas() == 0)
+			index += 1;
+		if (index >= players.size())
+			index = 0;
+		if (index == 0) {
+			turnos += 1;
+		}
+		setPlayerAtual();
 	}
 
 }
