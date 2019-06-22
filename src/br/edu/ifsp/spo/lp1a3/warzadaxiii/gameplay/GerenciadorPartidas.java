@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import br.edu.ifsp.spo.lp1a3.warzadaxiii.dado.Dado;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.fábricas.ContinenteFactory;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Continente;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
@@ -116,6 +117,12 @@ public abstract class GerenciadorPartidas {
 			turnos += 1;
 		}
 		setPlayerAtual();
+	}
+	
+	public static void ataqueDefesa(Território atacante, Território defensor, int qtdAtaque, int qtdDefesa) {
+		Dado dado = new Dado(6);
+		atacante.getDominador().rolarDado(qtdAtaque, dado);
+		defensor.getDominador().rolarDado(qtdDefesa, dado);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.gameplay.GerenciadorPartidas;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.player.Player;
+import br.edu.ifsp.spo.lp1a3.warzadaxiii.repositorios.TerritórioRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,30 +66,39 @@ public class NovosTerritoriosController {
 		if (paises.getValue() == null || qtd.getValue() == null) {
 			mensagem.setText("Por favor selecione uma quantidade e um país!");
 			mensagem.setTextFill(Color.web("#d61010"));
-		}
-		GerenciadorPartidas.distribuirTropasNovas(GerenciadorPartidas.getPlayerAtual(), paises.getValue(),qtd.getValue());
-		tropasNovas -= qtd.getValue();
-		if (tropasNovas != 0) {
-			int qtdDistribuida = 1;
-			qtd.getItems().clear();
-			while(qtdDistribuida <= tropasNovas) {
-				qtd.getItems().add(qtdDistribuida);
-				qtdDistribuida += 1;
-			}
-			mensagem.setText("Você ainda possui tropas para distribuir. Continue distruibuindo entre seus países!");
 		} else {
-			mensagem.setText("");
-			Stage stage = (Stage) distribuir.getScene().getWindow();
-			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("Ataque.fxml"));
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.show();
+			GerenciadorPartidas.distribuirTropasNovas(GerenciadorPartidas.getPlayerAtual(), paises.getValue(),qtd.getValue());
+			tropasNovas -= qtd.getValue();
+			if (tropasNovas != 0) {
+				int qtdDistribuida = 1;
+				qtd.getItems().clear();
+				while(qtdDistribuida <= tropasNovas) {
+					qtd.getItems().add(qtdDistribuida);
+					qtdDistribuida += 1;
+				}
+				mensagem.setText("Você ainda possui tropas para distribuir. Continue distruibuindo entre seus países!");
+				mensagem.setTextFill(Color.web("#108d22"));
+				Território pais = TerritórioRepository.pegarTerritório(paises.getValue());
+				tropasAtuais.setText("Possui "+pais.getTropas()+" tropa(as) no momento");
+			} else {
+				mensagem.setText("");
+				Stage stage = (Stage) distribuir.getScene().getWindow();
+				FXMLLoader loader = new FXMLLoader();
+				Pane root = loader.load(getClass().getResource("Ataque.fxml"));
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.setResizable(false);
+				stage.show();
+			}
 		}
 	}
 	
 	public void cleanMensagem(ActionEvent event) {
 		mensagem.setText("");
+	}
+	
+	public void setTropasAtuais(ActionEvent event) {
+		Território pais = TerritórioRepository.pegarTerritório(paises.getValue());
+		tropasAtuais.setText("Possui "+pais.getTropas()+" tropa(as) no momento");
 	}
 }

@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class MoveController {
@@ -74,13 +75,19 @@ public class MoveController {
 	}
 	
 	public void mover(ActionEvent event) throws IOException {
-		Território OrigemTerr = TerritórioRepository.pegarTerritório(origem.getValue());
-		Território destinoTerr = TerritórioRepository.pegarTerritório(destino.getValue());
-		GerenciadorPartidas.moverTropas(OrigemTerr, destinoTerr, qtd.getValue());
-		mensagem.setText("Você moveu "+qtd.getValue()+" de "+origem.getValue()+
-				" para "+destino.getValue()+"! Continue a mover tropas, ou passe sua vez");
-		paisMovidos.add(destino.getValue());
-		setarOrigem();
+		if (origem.getValue() == null || destino.getValue() == null || qtd.getValue() == null) {
+			mensagem.setText("Por favor selecione uma origem, um destino e as tropas!");
+			mensagem.setTextFill(Color.web("#d61010"));
+		} else {
+			Território OrigemTerr = TerritórioRepository.pegarTerritório(origem.getValue());
+			Território destinoTerr = TerritórioRepository.pegarTerritório(destino.getValue());
+			GerenciadorPartidas.moverTropas(OrigemTerr, destinoTerr, qtd.getValue());
+			mensagem.setText("Você moveu "+qtd.getValue()+" de "+origem.getValue()+
+					" para "+destino.getValue()+"! Continue a mover tropas, ou passe sua vez");
+			paisMovidos.add(destino.getValue());
+			mensagem.setTextFill(Color.web("#108d22"));
+			setarOrigem();
+		}
 	}
 	
 	public void passar(ActionEvent event) throws IOException {
