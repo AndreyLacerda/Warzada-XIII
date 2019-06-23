@@ -17,7 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class AtaqueController {
+public class AtaqueControllerCont {
 	
 	@FXML
 	public Label playerLabel, mensagem, error;
@@ -29,7 +29,7 @@ public class AtaqueController {
 	public ComboBox<Integer> qtd;
 	
 	@FXML
-	public Button atacar;
+	public Button atacar, passar;
 	
 	@FXML
 	public void initialize() {
@@ -37,6 +37,8 @@ public class AtaqueController {
 		atacantes.getItems().clear();
 		qtd.getItems().clear();
 		atacados.getItems().clear();
+		error.setText("Você já atacou, e agora pode atacar de novo ou passar para a etapa de movimentação de tropas!");
+		error.setTextFill(Color.web("#108d22"));
 		setarAtacados();
 	}
 	
@@ -101,5 +103,15 @@ public class AtaqueController {
 			stage.setResizable(false);
 			stage.show();
 		}
+	}
+	
+	public void passar(ActionEvent event) throws IOException {
+		Stage stage = (Stage) passar.getScene().getWindow();
+		FXMLLoader loader = new FXMLLoader();
+		Pane root = loader.load(getClass().getResource("Move.fxml"));
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.setResizable(false);
+		stage.show();
 	}
 }

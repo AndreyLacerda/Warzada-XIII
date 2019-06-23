@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class MoveController {
 
 	@FXML
-	public Label playerLabel, mensagem;
+	public Label playerLabel, mensagem, qtdTropas;
 	
 	@FXML
 	public ComboBox<String> origem, destino;
@@ -71,6 +71,13 @@ public class MoveController {
 				qtd.getItems().add(qtdUsavel);
 				qtdUsavel += 1;
 			}
+		}
+	}
+	
+	public void setarQtdTropas() {
+		if (destino.getValue() != null) {
+			Território pais = TerritórioRepository.pegarTerritório(destino.getValue());
+			qtdTropas.setText("Possui "+pais.getTropas()+" tropas no momento");
 		}
 	}
 	

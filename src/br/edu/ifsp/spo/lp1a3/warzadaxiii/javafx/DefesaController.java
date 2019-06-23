@@ -1,13 +1,20 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.javafx;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.gameplay.GerenciadorPartidas;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class DefesaController {
 	
@@ -42,13 +49,22 @@ public class DefesaController {
 		}
 	}
 	
-	public void defender(ActionEvent event) {
+	public void defender(ActionEvent event) throws IOException {
 		if (qtd.getValue() == null) {
 			error.setText("Por favor selecione com quantas tropas irá defender");
 			error.setTextFill(Color.web("#d61010"));
 		} else {
 			error.setText("");
-			GerenciadorPartidas.ataqueDefesa(atacante, defensor, qtdAtaque, qtd.getValue());
+			ArrayList <Integer> resultado = GerenciadorPartidas.ataqueDefesa(atacante, defensor, qtdAtaque, qtd.getValue());
+			Stage stage = (Stage) defender.getScene().getWindow();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("ResultadoBatalha.fxml").openStream());
+			ResultadoBatalhaController resultController = (ResultadoBatalhaController)loader.getController();
+			resultController.setLabels(atacante, defensor, resultado);
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.show();
 		}
 	}
 	

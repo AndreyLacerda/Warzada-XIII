@@ -5,15 +5,14 @@ import java.util.Random;
 
 public abstract class Rolagem {
 	
-	private static ArrayList<Integer> rolagens = new ArrayList<Integer>();
-	
 	public static ArrayList<Integer> rolar(Dado dado, int qtd) {
 		
+		ArrayList<Integer> rolagens = new ArrayList<Integer>();
 		rolagens.clear();
 		Random rand = new Random();
-		Integer result = 0;
 		
 		for (int i = 0; i < qtd; i++){
+			Integer result = 0;
 			
 			while (result.intValue() == 0 || result.intValue() > dado.getLados()) {
 				result = rand.nextInt(dado.getLados()+1);
