@@ -1,6 +1,7 @@
 package br.edu.ifsp.spo.lp1a3.warzadaxiii.javafx;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.gameplay.GerenciadorPartidas;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
@@ -46,9 +47,15 @@ public class AtaqueController {
 		for (Território pais : GerenciadorPartidas.getPlayerAtual().getTerritorios()) {
 			if (pais.getTropas() > 1) {
 				for (Território vizinho : pais.getFronteira()) {
-					if (vizinho.getDominador() != GerenciadorPartidas.getPlayerAtual()) {
+					if (vizinho .getDominador() == null) {
 						if (!atacados.getItems().contains(vizinho.getNome())) {
 							atacados.getItems().add(vizinho.getNome());
+						}
+					} else {
+						if (vizinho.getDominador() != GerenciadorPartidas.getPlayerAtual()) {
+							if (!atacados.getItems().contains(vizinho.getNome())) {
+								atacados.getItems().add(vizinho.getNome());
+							}
 						}
 					}
 				}
@@ -90,16 +97,30 @@ public class AtaqueController {
 			error.setText("");
 			Território atacante = TerritórioRepository.pegarTerritório(atacantes.getValue());
 			Território defensor = TerritórioRepository.pegarTerritório(atacados.getValue());
-			((Node)event.getSource()).getScene().getWindow().hide();
-			Stage stage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("Defesa.fxml").openStream());
-			DefesaController defesa = (DefesaController)loader.getController();
-			defesa.setLabels(defensor, atacante, qtd.getValue());
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.show();
+			if (defensor.getDominador() != null) {
+				((Node)event.getSource()).getScene().getWindow().hide();
+				Stage stage = new Stage();
+				FXMLLoader loader = new FXMLLoader();
+				Pane root = loader.load(getClass().getResource("Defesa.fxml").openStream());
+				DefesaController defesa = (DefesaController)loader.getController();
+				defesa.setLabels(defensor, atacante, qtd.getValue());
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.setResizable(false);
+				stage.show();
+			} else {
+				ArrayList <Integer> resultado = GerenciadorPartidas.ataqueDefesa(atacante, defensor, qtd.getValue(), 1);
+				((Node)event.getSource()).getScene().getWindow().hide();
+				Stage stage = new Stage();
+				FXMLLoader loader = new FXMLLoader();
+				Pane root = loader.load(getClass().getResource("ResultadoBatalha.fxml").openStream());
+				ResultadoBatalhaController resultController = (ResultadoBatalhaController)loader.getController();
+				resultController.setLabels(atacante, defensor, resultado);
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.setResizable(false);
+				stage.show();
+			}
 		}
 	}
 }

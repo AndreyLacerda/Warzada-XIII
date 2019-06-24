@@ -31,7 +31,10 @@ public class ResultadoBatalhaController {
 	
 	public void setLabels(Território atacante, Território defensor, ArrayList<Integer> resultados) {
 		atacanteLabel.setText("Player "+atacante.getDominador().getNumero());
-		defensorLabel.setText("Player "+defensor.getDominador().getNumero());
+		if (defensor.getDominador() != null)
+			defensorLabel.setText("Player "+defensor.getDominador().getNumero());
+		else
+			defensorLabel.setText("Território Neutro");
 		this.resultados = resultados;
 		setarResults();
 		String consolidacao = GerenciadorPartidas.consolidarBatalha(atacante, defensor, resultados);
@@ -53,7 +56,7 @@ public class ResultadoBatalhaController {
 					Label result = new Label("Tirou "+resultados.get(i));
 					result.setLayoutX(324);
 					result.setLayoutY(posYDefensor);
-					posYAtacante += 23;
+					posYDefensor += 23;
 					tela.getChildren().add(result);
 				}
 			}

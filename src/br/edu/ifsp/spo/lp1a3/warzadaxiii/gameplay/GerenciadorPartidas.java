@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.dado.Dado;
+import br.edu.ifsp.spo.lp1a3.warzadaxiii.dado.Rolagem;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.fábricas.ContinenteFactory;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Continente;
 import br.edu.ifsp.spo.lp1a3.warzadaxiii.localização.Território;
@@ -132,8 +133,11 @@ public abstract class GerenciadorPartidas {
 	public static ArrayList<Integer> ataqueDefesa(Território atacante, Território defensor, int qtdAtaque, int qtdDefesa) {
 		Dado dado = new Dado(6);
 		ArrayList<Integer> resultAtaque = atacante.getDominador().rolarDado(qtdAtaque, dado);
-		ArrayList<Integer> resultDefesa = defensor.getDominador().rolarDado(qtdDefesa, dado);
-		
+		ArrayList<Integer> resultDefesa;
+		if (defensor.getDominador() != null)
+			resultDefesa = defensor.getDominador().rolarDado(qtdDefesa, dado);
+		else
+			resultDefesa = Rolagem.rolar(dado, qtdDefesa);	
 		int maiorDefesa = resultDefesa.get(0);
 		int menorDefesa = resultDefesa.get(0);
 		int meioDefesa = 0;
@@ -178,6 +182,7 @@ public abstract class GerenciadorPartidas {
 						menorDefesa = resultDefesa.get(i);
 					else
 						meioDefesa = resultDefesa.get(i);
+				i += 1;
 			}
 		} else {
 			if (qtdDefesa == 2) {
@@ -217,7 +222,8 @@ public abstract class GerenciadorPartidas {
 		if (!resultados.contains(0)) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -233,7 +239,8 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(1) > resultados.get(4)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -249,7 +256,8 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(2) > resultados.get(5)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -267,7 +275,8 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(2) != 0 && resultados.get(1) == 0 && resultados.get(4) == 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -283,7 +292,8 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(2) > resultados.get(5)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -301,7 +311,8 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(2) == 0 && resultados.get(1) == 0 && resultados.get(4) == 0 && resultados.get(5) == 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -319,7 +330,8 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) == 0 && resultados.get(2) != 0 && resultados.get(4) == 0 && resultados.get(5) == 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -337,7 +349,8 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) != 0 && resultados.get(2) != 0 && resultados.get(4) == 0 && resultados.get(5) == 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -355,7 +368,8 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) == 0 && resultados.get(2) != 0 && resultados.get(4) != 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(2);
-				defensor.getDominador().removeTropas(2);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(2);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -371,7 +385,8 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(2) > resultados.get(5)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -389,7 +404,8 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) != 0 && resultados.get(4) == 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -405,7 +421,8 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(2) > resultados.get(5)) {
 				defensor.removeTropas(1);
-				defensor.getDominador().removeTropas(1);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(1);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -423,25 +440,8 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) == 0 && resultados.get(2) == 0 && resultados.get(4) != 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(3);
-				defensor.getDominador().removeTropas(3);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
-				}
-				tropasPerdidasDefensor += 3;
-			} else {
-				atacante.removeTropas(1);
-				atacante.getDominador().removeTropas(1);
-				tropasPerdidasAtacante += 1;
-			}
-		}
-		
-		if (resultados.get(1) == 0 && resultados.get(2) == 0 && resultados.get(4) != 0 && resultados.get(5) != 0) {
-			if (resultados.get(0) > resultados.get(3)) {
-				defensor.removeTropas(3);
-				defensor.getDominador().removeTropas(3);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(3);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -459,7 +459,8 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) == 0 && resultados.get(2) == 0 && resultados.get(4) == 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(2);
-				defensor.getDominador().removeTropas(2);
+				if (defensor.getDominador() != null)
+					defensor.getDominador().removeTropas(2);
 				if (defensor.getTropas() == 0) {
 					defensor.updateDominador(atacante.getDominador());
 					defensor.addTropas(1);
@@ -481,13 +482,24 @@ public abstract class GerenciadorPartidas {
 		}
 		
 		if (dominou == true) {
-			return "Resultado: Player "+atacante.getDominador().getNumero()+
-					" perdeu "+tropasPerdidasAtacante+ " tropas e dominou "+defensor.getNome()+
-					" do Player "+defensor.getDominador().getNumero();
+			if (defensor.getDominador() != null) {
+				return "Resultado: Player "+atacante.getDominador().getNumero()+
+						" perdeu "+tropasPerdidasAtacante+ " tropas e dominou "+defensor.getNome()+
+						" do Player "+defensor.getDominador().getNumero();
+			} else {
+				return "Resultado: Player "+atacante.getDominador().getNumero()+
+						" perdeu "+tropasPerdidasAtacante+ " tropas e dominou "+defensor.getNome();
+			}
+			
 		} else {
-			return "Resultado: Player "+atacante.getDominador().getNumero()+
-					" perdeu "+tropasPerdidasAtacante+ " tropas. Enquanto o Player "+
-			defensor.getDominador().getNumero()+" perdeu "+tropasPerdidasDefensor+" tropas!";
+			if (defensor.getDominador() != null) {
+				return "Resultado: Player "+atacante.getDominador().getNumero()+
+						" perdeu "+tropasPerdidasAtacante+ " tropas. Enquanto o Player "+
+				defensor.getDominador().getNumero()+" perdeu "+tropasPerdidasDefensor+" tropas!";
+			} else {
+				return "Resultado: Player "+atacante.getDominador().getNumero()+
+						" perdeu "+tropasPerdidasAtacante+ " tropas. Enquanto o Território perdeu "+tropasPerdidasDefensor+" tropas!";
+			}
 		}
 	}
 	

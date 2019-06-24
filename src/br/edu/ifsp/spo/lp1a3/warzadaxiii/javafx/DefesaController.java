@@ -31,14 +31,16 @@ public class DefesaController {
 	@FXML
 	public Button defender;
 	
-	public void setLabels(Território defensor, Território atacante, Integer qtd) {
+	public void setLabels(Território defensor, Território atacante, Integer qtd) throws IOException {
 		this.qtdAtaque = qtd;
 		this.atacante = atacante;
 		this.defensor = defensor;
-		playerLabel.setText("O Player "+defensor.getDominador().getNumero()+" está sobre ataque");
-		mensagem.setText("Defender "+defensor.getNome()+" usando quantas tropas?");
-		ataque.setText("(O ataque está usando "+qtd+" tropas)");
-		setQtd();
+		if (defensor.getDominador() != null) {
+			playerLabel.setText("O Player "+defensor.getDominador().getNumero()+" está sobre ataque");
+			mensagem.setText("Defender "+defensor.getNome()+" usando quantas tropas?");
+			ataque.setText("(O ataque está usando "+qtd+" tropas)");
+			setQtd();
+		}
 	}
 	
 	private void setQtd() {
