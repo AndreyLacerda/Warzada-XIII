@@ -222,13 +222,24 @@ public abstract class GerenciadorPartidas {
 		if (!resultados.contains(0)) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
 				tropasPerdidasDefensor += 1;
 			} else {
@@ -239,13 +250,24 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(1) > resultados.get(4)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
 				tropasPerdidasDefensor += 1;
 			} else {
@@ -256,14 +278,26 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(2) > resultados.get(5)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 1;
 			} else {
 				atacante.removeTropas(1);
@@ -275,14 +309,26 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(2) != 0 && resultados.get(1) == 0 && resultados.get(4) == 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 1;
 			} else {
 				atacante.removeTropas(1);
@@ -292,14 +338,26 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(2) > resultados.get(5)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 1;
 			} else {
 				atacante.removeTropas(1);
@@ -311,14 +369,26 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(2) == 0 && resultados.get(1) == 0 && resultados.get(4) == 0 && resultados.get(5) == 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 1;
 			} else {
 				atacante.removeTropas(1);
@@ -330,14 +400,26 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) == 0 && resultados.get(2) != 0 && resultados.get(4) == 0 && resultados.get(5) == 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 1;
 			} else {
 				atacante.removeTropas(2);
@@ -349,14 +431,26 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) != 0 && resultados.get(2) != 0 && resultados.get(4) == 0 && resultados.get(5) == 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 1;
 			} else {
 				atacante.removeTropas(3);
@@ -368,14 +462,26 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) == 0 && resultados.get(2) != 0 && resultados.get(4) != 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(2);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(2);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 2;
 			} else {
 				atacante.removeTropas(1);
@@ -385,14 +491,26 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(2) > resultados.get(5)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 1;
 			} else {
 				atacante.removeTropas(1);
@@ -404,14 +522,26 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) != 0 && resultados.get(4) == 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 1;
 			} else {
 				atacante.removeTropas(2);
@@ -421,14 +551,26 @@ public abstract class GerenciadorPartidas {
 			
 			if (resultados.get(2) > resultados.get(5)) {
 				defensor.removeTropas(1);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(1);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 1;
 			} else {
 				atacante.removeTropas(1);
@@ -440,14 +582,26 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) == 0 && resultados.get(2) == 0 && resultados.get(4) != 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(3);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(3);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 3;
 			} else {
 				atacante.removeTropas(1);
@@ -459,14 +613,26 @@ public abstract class GerenciadorPartidas {
 		if (resultados.get(1) == 0 && resultados.get(2) == 0 && resultados.get(4) == 0 && resultados.get(5) != 0) {
 			if (resultados.get(0) > resultados.get(3)) {
 				defensor.removeTropas(2);
-				if (defensor.getDominador() != null)
+				if (defensor.getDominador() != null) {
 					defensor.getDominador().removeTropas(2);
-				if (defensor.getTropas() == 0) {
-					defensor.updateDominador(atacante.getDominador());
-					defensor.addTropas(1);
-					atacante.removeTropas(1);
-					dominou = true;
+					if (defensor.getTropas() == 0) {
+						defensor.getDominador().removerDominio(defensor);
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
+				} else {
+					if (defensor.getTropas() == 0) {
+						defensor.updateDominador(atacante.getDominador());
+						defensor.getDominador().adicionarDominio(defensor);
+						defensor.addTropas(1);
+						atacante.removeTropas(1);
+						dominou = true;
+					}
 				}
+				
 				tropasPerdidasDefensor += 2;
 			} else {
 				atacante.removeTropas(1);
